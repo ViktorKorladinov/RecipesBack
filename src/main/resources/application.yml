@@ -1,0 +1,12 @@
+server:
+  port: 6996
+spring:
+  datasource:
+    url: jdbc:derby://localhost:1527/recipher_db;create=true
+    driver-class-name:  org.apache.derby.jdbc.ClientDriver
+    username: recipher
+    password: recipher
+  jpa:
+    hibernate:
+      ddl-auto: update
+debug: false
