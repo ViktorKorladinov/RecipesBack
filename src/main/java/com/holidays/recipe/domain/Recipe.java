@@ -20,16 +20,17 @@ public class Recipe {
 
     @Column(length = 256)
     private String name;
-    @Column(name = "DESCR", length = 2048)
+    @Column(name = "descr", length = 2048)
     private String description;
-
 
 
     //    @OneToMany
 //    @JoinColumn(name = )
     @ElementCollection()
     @CollectionTable(name = "recipe_ingredients", joinColumns = @JoinColumn(name = "recipe_id"))
+    @Column(name = "ingredient")
     private List<String> ingredients;
+
     @Column
     private String country;
 }

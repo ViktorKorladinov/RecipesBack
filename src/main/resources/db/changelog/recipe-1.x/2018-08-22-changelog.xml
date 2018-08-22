@@ -35,4 +35,12 @@
                                  constraintName="FKhnsmvxdlwxqq6x2wbgnoef5gr" deferrable="false"
                                  initiallyDeferred="false" referencedColumnNames="id" referencedTableName="recipe"/>
     </changeSet>
+    <changeSet author="vraptor" id="1534964050835-6">
+        <sqlFile path="db/data/recipe.sql"/>
+        <sqlFile path="db/data/recipe_ingredients.sql"/>
+    </changeSet>
+
+    <changeSet author="vraptor (generated)" id="1534971650654-1">
+        <renameColumn tableName="recipe_ingredients" oldColumnName="ingredients" newColumnName="ingredient"/>
+    </changeSet>
 </databaseChangeLog>
