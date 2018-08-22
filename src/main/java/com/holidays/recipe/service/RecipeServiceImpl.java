@@ -23,4 +23,13 @@ public class RecipeServiceImpl implements RecipeService {
     public List<Recipe> getRecipesByCountry(String country) {
         return repository.findAllByCountry(country);
     }
+    @Override
+    public List<Recipe> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public Recipe getRecipeById(Long id) {
+        return repository.findById(id).isPresent()? repository.findById(id).get():null;
+    }
 }

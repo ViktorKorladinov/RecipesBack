@@ -24,6 +24,7 @@ public class Recipe {
     private String description;
 
 
+
     //    @OneToMany
 //    @JoinColumn(name = )
     @ElementCollection()

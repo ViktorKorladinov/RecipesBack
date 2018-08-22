@@ -1,5 +1,6 @@
 server:
   port: 6996
+  address: 192.168.1.3
 spring:
   datasource:
     url: jdbc:derby://localhost:1527/recipe_db;create=true
@@ -9,4 +10,3 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-

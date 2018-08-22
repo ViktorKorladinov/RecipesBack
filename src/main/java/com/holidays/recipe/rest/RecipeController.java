@@ -4,12 +4,12 @@ import com.holidays.recipe.domain.Recipe;
 import com.holidays.recipe.service.RecipeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin()
 @RestController
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -20,13 +20,22 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
     @GetMapping(path ="/{country}")
-    public ResponseEntity<List<Recipe>>getRecipe(@PathVariable("country") String country){
+    public ResponseEntity<List<Recipe>>getRecipeByCountry(@PathVariable("country") String country){
         return ResponseEntity.ok(recipeService.getRecipesByCountry(country));
+    }
+    @GetMapping(path ="")
+    public ResponseEntity<List<Recipe>>getAllRecipes(){
+        return ResponseEntity.ok(recipeService.findAll());
+    }
+    @GetMapping(path ="/id/{id}")
+    public ResponseEntity<Recipe>getRecipeById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(recipeService.getRecipeById(id));
     }
     @PostMapping
     public ResponseEntity createRecipe(@RequestBody Recipe recipe){
         Recipe result = recipeService.createRecipe(recipe);
-        URI uri = MvcUriComponentsBuilder.fromMethodName(RecipeController.class, "getRecipe", result.getId()).build(result.getId());
-        return ResponseEntity.created(uri).build();
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
+                "/{id}").buildAndExpand(result.getId()).toUri();
+        return ResponseEntity.created(location).build();
     }
 }
