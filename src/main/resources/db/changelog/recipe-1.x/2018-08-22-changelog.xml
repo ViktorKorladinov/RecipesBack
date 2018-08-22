@@ -1,0 +1,38 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="vraptor (generated)" id="1534964050835-1">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="vraptor (generated)" id="1534964050835-2">
+        <createTable tableName="ingredient">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="ingredientPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vraptor (generated)" id="1534964050835-3">
+        <createTable tableName="recipe">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="recipePK"/>
+            </column>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="DESCR" type="VARCHAR(2048)"/>
+            <column name="name" type="VARCHAR(256)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vraptor (generated)" id="1534964050835-4">
+        <createTable tableName="recipe_ingredients">
+            <column name="recipe_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ingredients" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vraptor (generated)" id="1534964050835-5">
+        <addForeignKeyConstraint baseColumnNames="recipe_id" baseTableName="recipe_ingredients"
+                                 constraintName="FKhnsmvxdlwxqq6x2wbgnoef5gr" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="recipe"/>
+    </changeSet>
+</databaseChangeLog>

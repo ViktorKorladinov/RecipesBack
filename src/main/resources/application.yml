@@ -10,3 +10,16 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+---
+
+spring:
+  profiles: local
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:/db/changelog/recipe-changelog.xml
+    drop-first: true
+server:
+  address: localhost
