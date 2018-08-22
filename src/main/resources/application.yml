@@ -21,5 +21,8 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/recipe-changelog.xml
     drop-first: true
+  datasource:
+    url: jdbc:hsqldb:file:/opt/db/recipe_db
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
 server:
   address: localhost
