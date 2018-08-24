@@ -20,7 +20,7 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath:/db/changelog/recipe-changelog.xml
-    drop-first: true
+    drop-first: false
   datasource:
     url: jdbc:hsqldb:file:/opt/db/recipe_db
     driver-class-name: org.hsqldb.jdbc.JDBCDriver
